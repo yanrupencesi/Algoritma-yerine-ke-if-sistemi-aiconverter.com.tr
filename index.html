@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISCOVERMAP</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top right,rgba(122,44,255,0.20),transparent 30%),
+radial-gradient(circle at bottom left,rgba(0,102,255,0.14),transparent 30%);
+z-index:-1;
+}
+
+.container{
+width:100%;
+max-width:1400px;
+margin:auto;
+padding:0 40px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:90px;
+display:flex;
+justify-content:center;
+background:rgba(5,8,22,0.75);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
+}
+
+.nav-inner{
+width:100%;
+max-width:1400px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+}
+
+.logo{
+font-size:30px;
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(90deg,#b366ff,#7a2cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.auth-buttons{
+display:flex;
+gap:16px;
+}
+
+.auth-buttons a{
+text-decoration:none;
+padding:14px 24px;
+border-radius:14px;
+font-size:15px;
+font-weight:600;
+transition:0.3s;
+}
+
+.login-btn{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+}
+
+.signup-btn{
+background:linear-gradient(90deg,#7a2cff,#b366ff);
+color:white;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+padding:120px 30px 80px;
+}
+
+.hero-content{
+max-width:950px;
+}
+
+.hero-title{
+font-size:92px;
+line-height:1.05;
+font-weight:800;
+margin-bottom:28px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#7a2cff,#c084ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text{
+font-size:24px;
+line-height:1.8;
+color:#b7b7b7;
+max-width:850px;
+margin:auto;
+margin-bottom:50px;
+}
+
+.discover-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:20px 40px;
+background:linear-gradient(90deg,#7a2cff,#b366ff);
+color:white;
+text-decoration:none;
+font-size:20px;
+font-weight:700;
+border-radius:20px;
+box-shadow:0 0 40px rgba(122,44,255,0.35);
+transition:0.35s;
+}
+
+.discover-btn:hover{
+transform:translateY(-5px);
+}
+
+/* MAP SECTION */
+
+.map-section{
+padding:120px 0;
+}
+
+.section-top{
+text-align:center;
+max-width:900px;
+margin:auto;
+margin-bottom:70px;
+}
+
+.section-top h2{
+font-size:64px;
+margin-bottom:24px;
+}
+
+.section-top p{
+font-size:22px;
+line-height:1.8;
+color:#a8a8a8;
+}
+
+.map-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.map-card{
+height:420px;
+border-radius:34px;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:flex-end;
+padding:34px;
+text-decoration:none;
+transition:0.35s;
+border:1px solid rgba(255,255,255,0.08);
+background-size:cover;
+background-position:center;
+}
+
+.map-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(5,8,22,0.95),rgba(5,8,22,0.20));
+}
+
+.map-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 50px rgba(122,44,255,0.22);
+}
+
+.card-content{
+position:relative;
+z-index:2;
+}
+
+.card-content h3{
+font-size:38px;
+margin-bottom:16px;
+}
+
+.card-content p{
+font-size:18px;
+line-height:1.7;
+color:#d0d0d0;
+}
+
+.new-map{
+background-image:url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1600&auto=format&fit=crop');
+}
+
+.mid-map{
+background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+}
+
+.trend-map{
+background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop');
+}
+
+/* FEED PAGE */
+
+.feed-section{
+padding:140px 0 100px;
+}
+
+.feed-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:50px;
+}
+
+.feed-title{
+font-size:56px;
+}
+
+.profile-box{
+width:64px;
+height:64px;
+border-radius:50%;
+background:linear-gradient(90deg,#7a2cff,#b366ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:700;
+}
+
+.feed-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.feed-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+overflow:hidden;
+transition:0.35s;
+}
+
+.feed-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 40px rgba(122,44,255,0.18);
+}
+
+.feed-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.feed-content{
+padding:28px;
+}
+
+.feed-content h3{
+font-size:28px;
+margin-bottom:16px;
+}
+
+.feed-content p{
+font-size:17px;
+line-height:1.7;
+color:#b9b9b9;
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 0;
+text-align:center;
+color:#9e9e9e;
+border-top:1px solid rgba(255,255,255,0.05);
+margin-top:80px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+.hero-title{
+font-size:62px;
+}
+
+.map-grid,
+.feed-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-inner{
+padding:0 20px;
+}
+
+.auth-buttons a{
+padding:12px 18px;
+font-size:13px;
+}
+
+.hero-title{
+font-size:46px;
+}
+
+.hero-text,
+.section-top p{
+font-size:18px;
+}
+
+.section-top h2,
+.feed-title{
+font-size:42px;
+}
+
+.container{
+padding:0 20px;
+}
+
+.feed-top{
+flex-direction:column;
+gap:20px;
+align-items:flex-start;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="nav-inner">
+
+<div class="logo">
+DISCOVERMAP
+</div>
+
+<div class="auth-buttons">
+
+<a href="#" class="login-btn">
+Giriş Yap
+</a>
+
+<a href="#" class="signup-btn">
+Kayıt Ol
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1 class="hero-title">
+Algoritma Yerine
+<span class="gradient">
+Keşif Sistemi
+</span>
+</h1>
+
+<p class="hero-text">
+İnsanların sadece algoritmanın gösterdiği içerikleri değil,
+kendi özgür keşifleriyle içerikleri bulabildiği deneysel sosyal medya sistemi.
+</p>
+
+<a href="#map" class="discover-btn">
+Keşfet
+</a>
+
+</div>
+
+</section>
+
+<!-- MAP SECTION -->
+
+<section class="map-section" id="map">
+
+<div class="container">
+
+<div class="section-top">
+
+<h2>Keşif Haritası</h2>
+
+<p>
+İstediğin içerik bölgesine özgürce geç.
+Algoritmanın seni yönlendirmesine gerek yok.
+</p>
+
+</div>
+
+<div class="map-grid">
+
+<a href="#new-feed" class="map-card new-map">
+
+<div class="card-content">
+
+<h3>Yeni Çıkan İçerikleri Keşfet</h3>
+
+<p>
+Yeni başlayan içerik üreticilerini özgürce keşfet.
+</p>
+
+</div>
+
+</a>
+
+<a href="#mid-feed" class="map-card mid-map">
+
+<div class="card-content">
+
+<h3>Bilindik İçerikleri Keşfet</h3>
+
+<p>
+Orta seviyede keşfedilmiş içerik alanları.
+</p>
+
+</div>
+
+</a>
+
+<a href="#trend-feed" class="map-card trend-map">
+
+<div class="card-content">
+
+<h3>Trend İçerikleri Keşfet</h3>
+
+<p>
+En çok konuşulan ve viral olan içerik bölgeleri.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- NEW FEED -->
+
+<section class="feed-section" id="new-feed">
+
+<div class="container">
+
+<div class="feed-top">
+
+<h2 class="feed-title">
+Yeni Çıkan İçerikler
+</h2>
+
+<div class="profile-box">
+M
+</div>
+
+</div>
+
+<div class="feed-grid">
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Yeni İçerik Üreticisi</h3>
+<p>
+Algoritma baskısı olmadan keşfedilmeye başlayan yeni bir hesap.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>İlk Paylaşımlar</h3>
+<p>
+Henüz viral olmayan ama keşfedilebilir içerikler.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Yeni Fikir Akışı</h3>
+<p>
+İçerik üreticileri görünür olmak için algoritmaya bağımlı değil.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MID FEED -->
+
+<section class="feed-section" id="mid-feed">
+
+<div class="container">
+
+<div class="feed-top">
+
+<h2 class="feed-title">
+Bilindik İçerikler
+</h2>
+
+<div class="profile-box">
+M
+</div>
+
+</div>
+
+<div class="feed-grid">
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Orta Seviye Topluluk</h3>
+<p>
+Belirli bir takipçi kitlesi oluşmuş içerik alanı.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Topluluk Tartışmaları</h3>
+<p>
+Kendi kitlesini oluşturmaya başlayan içerikler.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Keşif Alanı</h3>
+<p>
+Trend olmayan ama görünür içerik bölgeleri.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TREND FEED -->
+
+<section class="feed-section" id="trend-feed">
+
+<div class="container">
+
+<div class="feed-top">
+
+<h2 class="feed-title">
+Trend İçerikler
+</h2>
+
+<div class="profile-box">
+M
+</div>
+
+</div>
+
+<div class="feed-grid">
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Viral Tartışma</h3>
+<p>
+En yüksek etkileşim alan içerik bölgeleri.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Trend Üreticiler</h3>
+<p>
+Geniş topluluklar tarafından takip edilen içerikler.
+</p>
+</div>
+</div>
+
+<div class="feed-card">
+<img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1200&auto=format&fit=crop">
+<div class="feed-content">
+<h3>Gündem Akışı</h3>
+<p>
+O an en çok konuşulan içerik alanları.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+© 2026 DISCOVERMAP — Algoritma Yerine Keşif Sistemi Prototipi
+
+</footer>
+
+</body>
+</html>
