@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeni Çıkan İçerikler</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top right,rgba(122,44,255,0.20),transparent 30%),
+radial-gradient(circle at bottom left,rgba(0,102,255,0.14),transparent 30%);
+z-index:-1;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:60px;
+}
+
+.logo{
+font-size:30px;
+font-weight:800;
+background:linear-gradient(90deg,#7a2cff,#c084ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.profile{
+width:62px;
+height:62px;
+border-radius:50%;
+background:linear-gradient(90deg,#7a2cff,#b366ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+font-size:22px;
+}
+
+.page-title{
+font-size:68px;
+margin-bottom:24px;
+}
+
+.page-text{
+font-size:22px;
+line-height:1.8;
+color:#b7b7b7;
+max-width:900px;
+margin-bottom:70px;
+}
+
+.feed-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.feed-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+overflow:hidden;
+transition:0.35s;
+}
+
+.feed-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 40px rgba(122,44,255,0.22);
+}
+
+.feed-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.feed-content{
+padding:28px;
+}
+
+.feed-content h3{
+font-size:28px;
+margin-bottom:16px;
+}
+
+.feed-content p{
+font-size:17px;
+line-height:1.7;
+color:#b7b7b7;
+}
+
+.back-btn{
+display:inline-block;
+margin-top:60px;
+padding:18px 30px;
+border-radius:16px;
+background:linear-gradient(90deg,#7a2cff,#b366ff);
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+@media(max-width:1000px){
+
+.feed-grid{
+grid-template-columns:1fr;
+}
+
+.page-title{
+font-size:42px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="navbar">
+
+<div class="logo">
+DISCOVERMAP
+</div>
+
+<div class="profile">
+M
+</div>
+
+</div>
+
+<h1 class="page-title">
+Yeni Çıkan İçerikler
+</h1>
+
+<p class="page-text">
+Henüz keşfedilmemiş ama görünür olmayı bekleyen içerikleri özgürce incele.
+Algoritmanın baskısı olmadan içerik üreticilerini keşfet.
+</p>
+
+<div class="feed-grid">
+
+<div class="feed-card">
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+
+<div class="feed-content">
+
+<h3>Yeni Yazılım İçeriği</h3>
+
+<p>
+Henüz viral olmayan ama keşfedilebilir yazılım üreticileri.
+</p>
+
+</div>
+
+</div>
+
+<div class="feed-card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="feed-content">
+
+<h3>Bağımsız Üretici</h3>
+
+<p>
+Kendi topluluğunu oluşturmaya çalışan yeni hesaplar.
+</p>
+
+</div>
+
+</div>
+
+<div class="feed-card">
+
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="feed-content">
+
+<h3>Yeni Fikir Akışı</h3>
+
+<p>
+Algoritma desteği olmadan keşfedilmeyi bekleyen içerikler.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="index.html" class="back-btn">
+Ana Sayfaya Dön
+</a>
+
+</div>
+
+</body>
+</html>
